@@ -136,7 +136,7 @@ public class HomeScreenActivity extends ActionBarActivity {
             JSONObject json = jParser.makeHttpRequest(url_search, "GET", params);
 
             // Check your log cat for JSON response
-            Log.d("Search idioms: ", json.toString());
+            Log.d("Search Stains: ", json.toString());
 
             try {
                 // Checking for SUCCESS TAG
@@ -182,7 +182,11 @@ public class HomeScreenActivity extends ActionBarActivity {
          * **/
         protected void onPostExecute(String file_url) {
             // dismiss the dialog after getting the related idioms
-            pDialog.dismiss();
+            if (pDialog != null) {
+                pDialog.dismiss();
+                pDialog = null;
+            }
+
             // updating UI from Background Thread
             runOnUiThread(new Runnable() {
                 public void run() {

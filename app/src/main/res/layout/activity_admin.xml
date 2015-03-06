@@ -30,7 +30,7 @@
             android:inputType="text"
             android:layout_columnSpan="12"
             android:gravity="fill"
-            android:background="@color/background_material_dark" />
+             />
 
         <TextView
             android:layout_width="103dp"
