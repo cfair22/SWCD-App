@@ -12,4 +12,6 @@
     <string name="search_title">Search for Stain</string>
     <string name="title_activity_search_results">SearchResultsActivity</string>
     <string name="master">Hello Master!</string>
+    <string name="stain_name">Stain Name</string>
+    <string name="title_activity_list_result">ListResult</string>
 </resources>

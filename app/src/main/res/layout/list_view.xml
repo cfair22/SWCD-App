@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- Idioms id will be HIDDEN - used to pass to other activity -->
+    <TextView
+        android:id="@+id/stain_id"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <!-- Entry data display -->
+    <TextView
+        android:id="@+id/stain_name_id"
+        android:text="@string/stain_name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"/>
+</LinearLayout>
