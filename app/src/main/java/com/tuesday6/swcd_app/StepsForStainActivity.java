@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -56,6 +57,10 @@ public class StepsForStainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         setContentView(R.layout.activity_steps_for_stain);
 
         Bundle extras = getIntent().getExtras();
@@ -91,6 +96,7 @@ public class StepsForStainActivity extends Activity {
 
                         //getting JSON string from URL
                         JSONObject json = jsonParser.makeHttpRequest(URL_SINGLE_STAIN, "GET", params);
+
 
                         //check your log cat for JSON response
                         Log.d("Single Stain Details: ", json.toString());

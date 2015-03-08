@@ -71,6 +71,11 @@ public class ListResult extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String iid = ((TextView) view.findViewById(R.id.stain_id)).getText().toString();
 
+                System.out.println("HERE HERE HERE HERE HERE");
+                System.out.println(view.findViewById(R.id.stain_id));
+                System.out.println(iid);
+                System.out.println("EXAMPLE");
+                //String passing_ID = stainsList.get(position).get();
                 //Starting new intent
                 Intent intent = new Intent(getApplicationContext(), StepsForStainActivity.class);
                 intent.putExtra(TAG_STAIN_ID, iid);
