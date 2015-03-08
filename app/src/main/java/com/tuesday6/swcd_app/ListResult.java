@@ -43,7 +43,7 @@ public class ListResult extends ListActivity {
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_STAINS = "stains";
-    private static final String TAG_STAIN_NAME_ID = "stain_name_id";
+    private static final String TAG_STAIN_NAME_DB = "stain_name_db";
     private static final String TAG_STAIN_ID = "stain_id";
 
     // products JSONArray
@@ -113,14 +113,14 @@ public class ListResult extends ListActivity {
 
                         // Storing each json item in variable
                         String id = c.getString(TAG_STAIN_ID);
-                        String stain_name = c.getString(TAG_STAIN_NAME_ID);
+                        String stain_name = c.getString(TAG_STAIN_NAME_DB);
 
                         // creating new HashMap
                         HashMap<String, String> map = new HashMap<String, String>();
 
                         // adding each child node to HashMap key => value
                         map.put(TAG_STAIN_ID, id);
-                        map.put(TAG_STAIN_NAME_ID, stain_name);
+                        map.put(TAG_STAIN_NAME_DB, stain_name);
 
                         // adding HashList to ArrayList
                         stainsList.add(map);
@@ -152,7 +152,7 @@ public class ListResult extends ListActivity {
                 ListAdapter adapter;
                 adapter = new SimpleAdapter(
                         ListResult.this, stainsList,
-                        R.layout.list_view, new String[]{TAG_STAIN_ID, TAG_STAIN_NAME_ID},
+                        R.layout.list_view, new String[]{TAG_STAIN_ID, TAG_STAIN_NAME_DB},
                         new int[]{R.id.stain_id, R.id.stain_name_id});
 
                 // updating listview
