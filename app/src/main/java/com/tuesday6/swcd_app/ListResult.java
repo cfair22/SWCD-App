@@ -69,8 +69,28 @@ public class ListResult extends ListActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String iid = ((TextView) view.findViewById(R.id.stain_id)).getText().toString();
+
+                //Starting new intent
+                Intent intent = new Intent(getApplicationContext(), StepsForStainActivity.class);
+                intent.putExtra(TAG_STAIN_ID, iid);
+                startActivityForResult(intent, 100);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // if result code 100
+        if (resultCode == 100) {
+            // if result code 100 is received
+            // means user edited/deleted product
+            // reload this screen again
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+        }
+
     }
 
     class LoadStains extends AsyncTask<String, String, String> {
@@ -136,29 +156,34 @@ public class ListResult extends ListActivity {
             //return "success";
             return null;
         }
-    }
-    /**
-     * After completing background task Dismiss the progress dialog
-     * **/
-    protected void onPostExecute(String file_url) {
-        // dismiss the dialog after getting the related idioms
-        pDialog.dismiss();
-        // updating UI from Background Thread
-        runOnUiThread(new Runnable() {
-            public void run() {
-            /**
-            * Updating parsed JSON data into ListView
-            * */
-                ListAdapter adapter;
-                adapter = new SimpleAdapter(
-                        ListResult.this, stainsList,
-                        R.layout.list_view, new String[]{TAG_STAIN_ID, TAG_STAIN_NAME_DB},
-                        new int[]{R.id.stain_id, R.id.stain_name_id});
 
-                // updating listview
-                setListAdapter(adapter);
+        /**
+         * After completing background task Dismiss the progress dialog
+         * *
+         */
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog after getting the related idioms
+            if (pDialog != null) {
+                pDialog.dismiss();
+                pDialog = null;
             }
-        });
+            // updating UI from Background Thread
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    /**
+                     * Updating parsed JSON data into ListView
+                     * */
+                    ListAdapter adapter;
+                    adapter = new SimpleAdapter(
+                            ListResult.this, stainsList,
+                            R.layout.list_view, new String[]{TAG_STAIN_ID, TAG_STAIN_NAME_DB},
+                            new int[]{R.id.stain_id, R.id.stain_name_id});
 
+                    // updating listview
+                    setListAdapter(adapter);
+                }
+            });
+
+        }
     }
 }

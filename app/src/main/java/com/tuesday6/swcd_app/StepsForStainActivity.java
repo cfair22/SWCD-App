@@ -74,61 +74,70 @@ public class StepsForStainActivity extends Activity {
             progressDialog = new ProgressDialog(context);
             progressDialog.setMessage("Loading Stain Details");
             progressDialog.setIndeterminate(false);
-            progressDialog.setCancelable(false);
+            progressDialog.setCancelable(true);
             progressDialog.show();
         }
 
-        protected String doInBackground(String... args){
-            //Building parameters
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("stain_id", stain_id));
+        protected String doInBackground(String... params){
 
-            //getting JSON string from URL
-            JSONObject json = jsonParser.makeHttpRequest(URL_SINGLE_STAIN, "GET", params);
+            //updated UI from Background Thread
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    int success;
+                    try{
+                        List<NameValuePair> params = new ArrayList<NameValuePair>();
+                        params.add(new BasicNameValuePair("stain_id", stain_id));
 
-            //check your log cat for JSON response
-            Log.d("Single Stain Details: ", json.toString());
+                        //getting JSON string from URL
+                        JSONObject json = jsonParser.makeHttpRequest(URL_SINGLE_STAIN, "GET", params);
 
-            try {
-                //Checking for success tag
-                int success = json.getInt(TAG_SUCCESS);
-                if (success == 1) {
-                    //product found
-                    //depending on the php code this might nor be neccessary.
-                    JSONArray stains = json.getJSONArray(TAG_STAINS);
+                        //check your log cat for JSON response
+                        Log.d("Single Stain Details: ", json.toString());
 
-                    //if there is only one product returned by the php then you can make a direct json object from the php
-                    JSONObject c = stains.getJSONObject(0);
+                        success = json.getInt(TAG_SUCCESS);
+                        if (success == 1){
+                            //product found
+                            //depending on the php code this might nor be neccessary.
+                            JSONArray stains = json.getJSONArray(TAG_STAINS);
 
-                    //Storing each json item in variable
-                    String id = c.getString(TAG_STAIN_ID);
-                    String name = c.getString(TAG_STAIN_NAME_DB);
-                    String carpet_how = c.getString(TAG_CARPET_HOW);
-                    String carpet_notes = c.getString(TAG_CARPET_NOTES);
-                    String tile_how = c.getString(TAG_TILE_HOW);
-                    String tile_notes = c.getString(TAG_TILE_NOTES);
-                    String area_rugs_how = c.getString(TAG_AREARUGS_HOW);
-                    String area_rugs_notes = c.getString(TAG_AREARUGS_NOTES);
-                    String upholstry_how = c.getString(TAG_UPHOLSTERY_HOW);
-                    String upholstry_notes = c.getString(TAG_UPHOLSTERY_NOTES);
+                            //if there is only one product returned by the php then you can make a direct json object from the php
+                            JSONObject c = stains.getJSONObject(0);
 
-                    //add each stains info tag to the hashmap passed into this class when called.
-                    staindata.put(TAG_STAIN_ID, id);
-                    staindata.put(TAG_STAIN_NAME_DB, name);
-                    staindata.put(TAG_CARPET_HOW, carpet_how);
-                    staindata.put(TAG_CARPET_NOTES, carpet_notes);
-                    staindata.put(TAG_TILE_HOW, tile_how);
-                    staindata.put(TAG_TILE_NOTES, tile_notes);
-                    staindata.put(TAG_AREARUGS_HOW, area_rugs_how);
-                    staindata.put(TAG_AREARUGS_NOTES, area_rugs_notes);
-                    staindata.put(TAG_UPHOLSTERY_HOW, upholstry_how);
-                    staindata.put(TAG_UPHOLSTERY_NOTES, upholstry_notes);
+                            //Storing each json item in variable
+                            String id = c.getString(TAG_STAIN_ID);
+                            String name = c.getString(TAG_STAIN_NAME_DB);
+                            String carpet_how = c.getString(TAG_CARPET_HOW);
+                            String carpet_notes = c.getString(TAG_CARPET_NOTES);
+                            String tile_how = c.getString(TAG_TILE_HOW);
+                            String tile_notes = c.getString(TAG_TILE_NOTES);
+                            String area_rugs_how = c.getString(TAG_AREARUGS_HOW);
+                            String area_rugs_notes = c.getString(TAG_AREARUGS_NOTES);
+                            String upholstry_how = c.getString(TAG_UPHOLSTERY_HOW);
+                            String upholstry_notes = c.getString(TAG_UPHOLSTERY_NOTES);
 
-                    Log.d("staindata: ", staindata.get("name"));
+                            //add each stains info tag to the hashmap passed into this class when called.
+                            staindata.put(TAG_STAIN_ID, id);
+                            staindata.put(TAG_STAIN_NAME_DB, name);
+                            staindata.put(TAG_CARPET_HOW, carpet_how);
+                            staindata.put(TAG_CARPET_NOTES, carpet_notes);
+                            staindata.put(TAG_TILE_HOW, tile_how);
+                            staindata.put(TAG_TILE_NOTES, tile_notes);
+                            staindata.put(TAG_AREARUGS_HOW, area_rugs_how);
+                            staindata.put(TAG_AREARUGS_NOTES, area_rugs_notes);
+                            staindata.put(TAG_UPHOLSTERY_HOW, upholstry_how);
+                            staindata.put(TAG_UPHOLSTERY_NOTES, upholstry_notes);
+
+                            Log.d("staindata: ", staindata.get("name"));
+                        } else {
+                            //no stain with id was found
+                        }
+                    } catch (JSONException e){
+                        e.printStackTrace();
+                    }
                 }
-            } catch(JSONException e){
-                e.printStackTrace();
-            }
+            });
+
             return null;
         }
 
