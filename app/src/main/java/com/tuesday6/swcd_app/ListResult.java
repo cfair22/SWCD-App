@@ -58,7 +58,8 @@ public class ListResult extends ListActivity {
         setContentView(R.layout.activity_list_result);
         Intent myIntent = getIntent();
 
-        searchkey = myIntent.getStringExtra("keyword");
+        Bundle extras = getIntent().getExtras();
+        searchkey = extras.getString("keyword");
 
         stainsList = new ArrayList<HashMap<String, String>>();
 

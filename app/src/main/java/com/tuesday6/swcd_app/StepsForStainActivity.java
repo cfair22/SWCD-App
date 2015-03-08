@@ -58,8 +58,8 @@ public class StepsForStainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_steps_for_stain);
 
-        Intent intent = getIntent();
-        stain_id = intent.getStringExtra("stain_id");
+        Bundle extras = getIntent().getExtras();
+        stain_id = extras.getString("stain_id");
 
         new LoadSingleStain().execute();
 
@@ -78,7 +78,7 @@ public class StepsForStainActivity extends Activity {
             progressDialog.show();
         }
 
-        protected String doInBackground(String... params){
+        protected String doInBackground(String... args){
 
             //updated UI from Background Thread
             runOnUiThread(new Runnable() {

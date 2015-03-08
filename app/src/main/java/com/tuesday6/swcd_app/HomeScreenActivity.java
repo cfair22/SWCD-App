@@ -61,7 +61,7 @@ public class HomeScreenActivity extends Activity implements View.OnClickListener
     public void onClick(View v){
         if (v.getId() == R.id.search_button){
             Intent searchIntent = new Intent(HomeScreenActivity.this, ListResult.class);
-            searchIntent.putExtra("key", editSearch.getText().toString());
+            searchIntent.putExtra("keyword", editSearch.getText().toString());
             startActivity(searchIntent);
         }
     }
