@@ -70,7 +70,7 @@ public class ListResult extends ListActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String iid = ((TextView) view.findViewById(R.id.stain_id)).getText().toString();
-
+                System.out.println("The id click is " + iid);
                 //Starting new intent
                 Intent intent = new Intent(getApplicationContext(), StepsForStainActivity.class);
                 intent.putExtra(TAG_STAIN_ID, iid);
