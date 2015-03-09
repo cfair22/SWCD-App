@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.apache.http.NameValuePair;
@@ -26,10 +27,16 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class StepsForStainActivity extends Activity {
+public class StepsForStainActivity extends Activity implements View.OnClickListener {
 
     // Declare layouts
     TextView stainName;
+    Button tile;
+    Button carpet;
+    Button rug;
+    Button upholstery;
+    TextView howto;
+    TextView notes;
 
     JSONParser jsonParser = new JSONParser();
 
@@ -75,7 +82,40 @@ public class StepsForStainActivity extends Activity {
 
         new LoadSingleStain().execute();
 
+        tile = (Button) findViewById(R.id.tile_button);
+        carpet = (Button) findViewById(R.id.carpet_button);
+        rug = (Button) findViewById(R.id.rug_button);
+        upholstery = (Button) findViewById(R.id.upholstery_button);
 
+        tile.setOnClickListener(this);
+        carpet.setOnClickListener(this);
+        rug.setOnClickListener(this);
+        upholstery.setOnClickListener(this);
+
+        howto = (TextView) findViewById(R.id.how_to);
+        notes = (TextView) findViewById(R.id.notes);
+
+
+    }
+
+    @Override
+    public void onClick(View v){
+        if (v.getId() == R.id.tile_button){
+            howto.setText(staindata.get(TAG_TILE_HOW));
+            notes.setText(staindata.get(TAG_TILE_NOTES));
+        }
+        if (v.getId() == R.id.carpet_button){
+            howto.setText(staindata.get(TAG_CARPET_HOW));
+            notes.setText(staindata.get(TAG_CARPET_NOTES));
+        }
+        if (v.getId() == R.id.rug_button){
+            howto.setText(staindata.get(TAG_AREARUGS_HOW));
+            notes.setText(staindata.get(TAG_AREARUGS_NOTES));
+        }
+        if (v.getId() == R.id.upholstery_button){
+            howto.setText(staindata.get(TAG_UPHOLSTERY_HOW));
+            notes.setText(staindata.get(TAG_UPHOLSTERY_NOTES));
+        }
     }
 
     class LoadSingleStain extends AsyncTask<String, String, String>{
@@ -221,9 +261,17 @@ public class StepsForStainActivity extends Activity {
             runOnUiThread(new Runnable(){
                 public void run(){
                     stainName = (TextView) findViewById(R.id.stain_name);
+
+
+
                     System.out.println("Stain name = " + staindata.get(TAG_STAIN_NAME));
 
                     stainName.setText("ID: " + staindata.get(TAG_STAIN_NAME));
+                    howto.setText(staindata.get(TAG_CARPET_HOW));
+                    notes.setText(staindata.get(TAG_CARPET_NOTES));
+
+
+
                 }
                 });
         }

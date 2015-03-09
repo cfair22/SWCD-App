@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".StepsForStain">
+    tools:context=".StepsForStain"
+    android:weightSum="1">
 
 
     <TextView
@@ -12,5 +13,107 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/stain_name"
         android:id="@+id/stain_name"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp">
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_carpet"
+            android:id="@+id/carpet_button" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_tile"
+            android:id="@+id/tile_button"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/carpet_button" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_rug"
+            android:id="@+id/rug_button"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/tile_button" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_upholstery"
+            android:id="@+id/upholstery_button"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/rug_button" />
+
+    </LinearLayout>
+
+
+    <ScrollView android:id="@+id/ScrollView01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:text="@string/howto_label"
+                android:id="@+id/howto_label" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:ems="10"
+                android:id="@+id/how_to"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:text="@string/notes_label"
+                android:id="@+id/notes_label" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:ems="10"
+                android:id="@+id/notes"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
 </LinearLayout>
