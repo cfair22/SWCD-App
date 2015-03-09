@@ -49,7 +49,7 @@ public class StepsForStainActivity extends Activity implements View.OnClickListe
     Context context = this;
 
     private static final String URL_SINGLE_STAIN = "http://southwestcd.com/return_stain.php";
-    private static final String url_stain = "http://southwestcd.com/return_stain.php?stain_id=32";
+    //private static final String url_stain = "http://southwestcd.com/return_stain.php?stain_id=32";
 
     //JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -77,7 +77,7 @@ public class StepsForStainActivity extends Activity implements View.OnClickListe
         Bundle extras = getIntent().getExtras();
         stain_id = extras.getString("stain_id");
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         new LoadSingleStain().execute();

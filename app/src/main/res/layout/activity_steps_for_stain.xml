@@ -30,34 +30,47 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
             android:text="@string/button_carpet"
-            android:id="@+id/carpet_button" />
+            android:id="@+id/carpet_button"
+            android:textSize="10sp"
+            android:padding="0dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
             android:text="@string/button_tile"
             android:id="@+id/tile_button"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/carpet_button" />
+            android:layout_toEndOf="@+id/carpet_button"
+            android:textSize="10sp"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
             android:text="@string/button_rug"
             android:id="@+id/rug_button"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/tile_button" />
+            android:layout_toEndOf="@+id/tile_button"
+            android:textSize="10sp"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
             android:text="@string/button_upholstery"
             android:id="@+id/upholstery_button"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/rug_button" />
+            android:layout_toEndOf="@+id/rug_button"
+            android:textSize="10sp"/>
 
     </LinearLayout>
 
