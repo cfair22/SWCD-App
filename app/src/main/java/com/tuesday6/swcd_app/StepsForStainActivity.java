@@ -154,7 +154,7 @@ public class StepsForStainActivity extends Activity implements View.OnClickListe
                             //if there is only one product returned by the php then you can make a direct json object from the php
                             JSONObject c = stains_one.getJSONObject(0);
 
-                            c.has(TAG_CARPET_NOTES);
+
 
                             //Storing each json item in variable
                             // each if statement blocks against null values
