@@ -38,4 +38,5 @@
     <string name="admin_upholstery_notes_label">Upholstery Notes</string>
     <string name="admin_upholstery_notes">Extra Notes for Upholstery Cleaning</string>
     <string name="home_admin_login">Admin Login</string>
+    <string name="title_activity_login">Login</string>
 </resources>
