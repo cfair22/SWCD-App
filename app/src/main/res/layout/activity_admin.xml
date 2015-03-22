@@ -38,6 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/admin_carpet_label"
                 android:id="@+id/admin_carpet_howto_label"
@@ -78,6 +79,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/admin_tile_howto_label"
                 android:id="@+id/admin_tile_howto_label"
@@ -117,6 +119,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/admin_rugs_howto_label"
                 android:id="@+id/admin_rugs_howto_label"
@@ -156,6 +159,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/admin_upholstery_howto_label"
                 android:id="@+id/admin_upholstery_howto_label"
@@ -190,6 +194,14 @@
                 android:id="@+id/admin_upholstery_notes"
                 android:layout_below="@+id/admin_upholstery_notes_label"
                 android:layout_centerHorizontal="true" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:id="@+id/submit_stain"
+                android:text="@string/submit_new_stain"
+                android:layout_below="@+id/admin_upholstery_notes"/>
 
         </RelativeLayout>
         </ScrollView>
