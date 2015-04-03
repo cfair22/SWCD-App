@@ -44,6 +44,7 @@ import java.util.List;
 public class HomeScreenActivity extends Activity implements View.OnClickListener {
 
     private Button searchButton;
+    private Button loginButton;
     private EditText editSearch;
 
 
@@ -55,6 +56,9 @@ public class HomeScreenActivity extends Activity implements View.OnClickListener
         editSearch = (EditText)findViewById(R.id.edit_search);
         searchButton = (Button) findViewById(R.id.search_button);
         searchButton.setOnClickListener(this);
+
+        loginButton = (Button) findViewById(R.id.button_admin_login);
+        loginButton.setOnClickListener(this);
     }
 
     @Override
@@ -63,6 +67,11 @@ public class HomeScreenActivity extends Activity implements View.OnClickListener
             Intent searchIntent = new Intent(HomeScreenActivity.this, ListResult.class);
             searchIntent.putExtra("keyword", editSearch.getText().toString());
             startActivity(searchIntent);
+        }
+
+        if (v.getId() == R.id.button_admin_login){
+            Intent loginIntent = new Intent(HomeScreenActivity.this, Login.class);
+            startActivity(loginIntent);
         }
     }
     @Override

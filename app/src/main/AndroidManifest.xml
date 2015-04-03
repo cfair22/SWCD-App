@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tuesday6.swcd_app" >
+
     <!-- Internet Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -17,7 +18,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".FindStainActivity"
@@ -31,10 +31,17 @@
             android:name=".AdminActivity"
             android:label="@string/title_activity_admin" >
         </activity>
-
         <activity
             android:name=".ListResult"
             android:label="@string/title_activity_list_result" >
+        </activity>
+        <activity
+            android:name=".Login"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".AdminPanel"
+            android:label="@string/title_activity_admin_panel" >
         </activity>
     </application>
 
