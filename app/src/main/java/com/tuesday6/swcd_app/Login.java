@@ -104,7 +104,7 @@ public class Login extends Activity implements View.OnClickListener {
                     Log.d("Login Sucessful", jsonObject.toString());
 
                     //Intent to send password
-                    Intent intent = new Intent(Login.this, AdminActivity.class);
+                    Intent intent = new Intent(Login.this, AdminPanel.class);
                     startActivity(intent);
                 } else{
                    System.out.println("Attempt was not successful");

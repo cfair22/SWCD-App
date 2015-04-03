@@ -39,6 +39,10 @@
             android:name=".Login"
             android:label="@string/title_activity_login" >
         </activity>
+        <activity
+            android:name=".AdminPanel"
+            android:label="@string/title_activity_admin_panel" >
+        </activity>
     </application>
 
 </manifest>

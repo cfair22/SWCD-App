@@ -40,4 +40,11 @@
     <string name="home_admin_login">Admin Login</string>
     <string name="title_activity_login">Login</string>
     <string name="submit_new_stain">Submit New Stain</string>
+    <string name="title_activity_admin_panel">AdminPanel</string>
+    <string name="admin_panel_addStain_label">Add New Stain</string>
+    <string name="admin_panel_addStain_button">Add Stain</string>
+    <string name="admin_panel_editStain_label">Edit Existing Stain</string>
+    <string name="admin_panel_editStain_button">Edit Stain</string>
+    <string name="admin_panel_deleteStain_label">Delete Existing Stain</string>
+    <string name="admin_panel_deleteStain_button">Delete Stain</string>
 </resources>

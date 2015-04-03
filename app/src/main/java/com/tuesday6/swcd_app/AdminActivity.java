@@ -94,14 +94,14 @@ public class AdminActivity extends Activity implements View.OnClickListener {
             //Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("stain_name",stain_name_db ));
-            params.add(new BasicNameValuePair("carpet_howto_db", carpet_howto_db));
-            params.add(new BasicNameValuePair("carpet_notes_db", carpet_notes_db));
-            params.add(new BasicNameValuePair("tile_howto_db", tile_howto_db));
-            params.add(new BasicNameValuePair("tile_notes_db", tile_notes_db));
-            params.add(new BasicNameValuePair("area_rugs_howto_db", area_rugs_howto_db));
-            params.add(new BasicNameValuePair("area_rugs_notes_db", area_rugs_notes_db));
-            params.add(new BasicNameValuePair("upholstery_howto_db", upholstery_howto_db));
-            params.add(new BasicNameValuePair("upholstery_notes_db", upholstery_notes_db));
+            params.add(new BasicNameValuePair("carpet_howto", carpet_howto_db));
+            params.add(new BasicNameValuePair("carpet_notes", carpet_notes_db));
+            params.add(new BasicNameValuePair("tile_howto", tile_howto_db));
+            params.add(new BasicNameValuePair("tile_notes", tile_notes_db));
+            params.add(new BasicNameValuePair("area_rugs_howto", area_rugs_howto_db));
+            params.add(new BasicNameValuePair("area_rugs_notes", area_rugs_notes_db));
+            params.add(new BasicNameValuePair("upholstery_howto", upholstery_howto_db));
+            params.add(new BasicNameValuePair("upholstery_notes", upholstery_notes_db));
 
             //getting JSON object
             JSONObject jsonObject = jsonParser.makeHttpRequest(urlNewStain, "POST", params);
