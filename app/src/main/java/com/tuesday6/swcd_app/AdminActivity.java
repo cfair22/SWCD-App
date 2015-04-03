@@ -43,6 +43,8 @@ public class AdminActivity extends Activity implements View.OnClickListener {
 
     //JSON node names
     private static final String TAG_SUCCESS = "success";
+    private static final String TAG_MESSAGE = "message";
+    private static final String TAG_STAIN_ID = "stain_id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,11 +113,13 @@ public class AdminActivity extends Activity implements View.OnClickListener {
             //check for success tag
             try{
                 int success = jsonObject.getInt(TAG_SUCCESS);
+                String stain_id = jsonObject.getString(TAG_STAIN_ID);
 
                 if(success == 1){
-                    Intent intent = new Intent(AdminActivity.this, StepsForStainActivity.class);
-                    intent.putExtra("stain_name_db", newStainName.getText().toString());
-                    startActivity(intent);
+                    System.out.println("The new stain id = " + stain_id);
+                    Intent intent = new Intent(getApplicationContext(), StepsForStainActivity.class);
+                    intent.putExtra(TAG_STAIN_ID, stain_id);
+                    startActivityForResult(intent, 100);
                 } else {
                     System.out.println("Failed to create stain");
                 }
@@ -132,6 +136,7 @@ public class AdminActivity extends Activity implements View.OnClickListener {
             }
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
