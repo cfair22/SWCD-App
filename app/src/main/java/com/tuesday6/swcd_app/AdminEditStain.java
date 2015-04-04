@@ -330,6 +330,8 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
                 } else {
                     // Failed tp update stain
                     System.out.println("Failed to update stain");
+                    Log.d("Failure", "failure");
+                    Log.d("Message", jsonObject.getString("message"));
                 }
             } catch (JSONException e){
                 e.printStackTrace();
@@ -369,7 +371,7 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
                 params.add(new BasicNameValuePair("stain_id", stain_id));
 
                 //getting stain details
-                JSONObject jsonObject = jsonParser.makeHttpRequest(urlDeleteStain, "POST", params);
+                JSONObject jsonObject = jsonParser.makeHttpRequest(urlDeleteStain, "GET", params);
 
                 Log.d("Delete Stain!", jsonObject.toString());
 
