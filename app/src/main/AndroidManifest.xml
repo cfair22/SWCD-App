@@ -43,6 +43,14 @@
             android:name=".AdminPanel"
             android:label="@string/title_activity_admin_panel" >
         </activity>
+        <activity
+            android:name=".Admin_ListAllStains"
+            android:label="Admin_ListAllStains">
+        </activity>
+        <activity
+            android:name=".AdminEditStain"
+            android:label="@string/title_activity_admin_edit_stain" >
+        </activity>
     </application>
 
 </manifest>
