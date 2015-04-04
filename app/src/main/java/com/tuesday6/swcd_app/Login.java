@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,8 +32,10 @@ import java.util.List;
 
 public class Login extends Activity implements View.OnClickListener {
 
+
     private Button loginButton;
     private EditText passwordEditText;
+
 
     //progress Dialog
     private ProgressDialog progressDialog;
@@ -53,11 +57,8 @@ public class Login extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_login);
 
         passwordEditText = (EditText) findViewById(R.id.admin_login_editText);
-
         loginButton = (Button)findViewById(R.id.admin_login_at_login);
         loginButton.setOnClickListener(this);
-
-
     }
 
     @Override
@@ -99,6 +100,7 @@ public class Login extends Activity implements View.OnClickListener {
 
                 Log.d("Login Attempt", jsonObject.toString());
                 success = jsonObject.getInt(TAG_SUCCESS);
+
                 if (success == 1){
                     System.out.println("Login was sucessful");
                     Log.d("Login Sucessful", jsonObject.toString());
@@ -107,6 +109,7 @@ public class Login extends Activity implements View.OnClickListener {
                     Intent intent = new Intent(Login.this, AdminPanel.class);
                     startActivity(intent);
                 } else{
+
                    System.out.println("Attempt was not successful");
                    progressDialog.dismiss();
 
