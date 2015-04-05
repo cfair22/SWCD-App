@@ -360,6 +360,7 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
             progressDialog.show();
         }
 
+        //test testest
         //Deleting Stain
         protected String doInBackground(String... args){
             //check for success tag
