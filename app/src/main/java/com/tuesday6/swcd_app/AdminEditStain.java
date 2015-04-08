@@ -325,7 +325,6 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
 
                 if(success == 1){
                     System.out.println("Successfully updated Stain!");
-
                     Log.d("Message", jsonObject.getString("message"));
                     Intent intent = getIntent();
                     setResult(100, intent);
