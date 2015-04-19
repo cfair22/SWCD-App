@@ -9,6 +9,7 @@ public class SWCDApp extends Application {
 
     public static String databaseMessage = "Stain List:";
     public static boolean isDeleted = false;
+    public static boolean isLoggedIn = false;
 
     private static SWCDApp singleton;
 

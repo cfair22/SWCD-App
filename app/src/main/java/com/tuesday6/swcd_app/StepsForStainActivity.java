@@ -37,6 +37,7 @@ public class StepsForStainActivity extends Activity implements View.OnClickListe
     Button upholstery;
     TextView howto;
     TextView notes;
+    Button backToAdminPanel;
 
     JSONParser jsonParser = new JSONParser();
 
@@ -94,6 +95,10 @@ public class StepsForStainActivity extends Activity implements View.OnClickListe
 
         howto = (TextView) findViewById(R.id.how_to);
         notes = (TextView) findViewById(R.id.notes);
+
+        if (SWCDApp.isLoggedIn){
+
+        }
 
 
     }
