@@ -82,7 +82,7 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
         stain_id = intent.getStringExtra(TAG_STAIN_ID);
         //For testing purposes the above line is commented delete the line below
 
-
+        SWCDApp.isDeleted = false;
 
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -383,9 +383,11 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
                 if (success == 1){
                     //stain deleted
                     message = jsonObject.getString(TAG_MESSAGE);
+                    SWCDApp.databaseMessage = message;
+                    SWCDApp.isDeleted = true;
                     System.out.println(message);
                     Intent intent = getIntent();
-                    intent.putExtra("message", message);
+
                     setResult(100, intent);
                     finish();
                 } else {

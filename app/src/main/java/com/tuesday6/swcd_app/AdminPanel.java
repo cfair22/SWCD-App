@@ -20,6 +20,8 @@ public class AdminPanel extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_panel);
 
+        SWCDApp.isDeleted = false;
+
         addStain = (Button) findViewById(R.id.admin_panel_addStain_button);
         addStain.setOnClickListener(this);
 
