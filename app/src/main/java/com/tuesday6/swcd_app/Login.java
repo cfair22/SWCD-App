@@ -40,6 +40,8 @@ public class Login extends Activity implements View.OnClickListener {
     public boolean loginStatus = true;
     private TextView databaseMessage;
     private String message;
+    private int loginCounter;
+    public boolean exit;
 
     //progress Dialog
     private ProgressDialog progressDialog;
@@ -67,6 +69,8 @@ public class Login extends Activity implements View.OnClickListener {
         databaseMessage = (TextView) findViewById(R.id.admin_login_database_message);
         databaseMessage.setText("Login failed");
         databaseMessage.setVisibility(View.INVISIBLE);
+
+        loginCounter = 0;
     }
 
     @Override
@@ -119,6 +123,7 @@ public class Login extends Activity implements View.OnClickListener {
                     Intent intent = new Intent(Login.this, AdminPanel.class);
                     startActivity(intent);
                 } else{
+                    loginCounter++;
                     message = jsonObject.getString(TAG_MESSAGE);
                     loginStatus = false;
 
@@ -149,12 +154,31 @@ public class Login extends Activity implements View.OnClickListener {
         }
     }
 
+    public void AppExit()
+    {
+        this.finish();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+
+    /*int pid = android.os.Process.myPid();=====> use this if you want to kill your activity. But its not a good one to do.
+    android.os.Process.killProcess(pid);*/
+
+    }
+
+
 
 
     public void UpdateUi(boolean status){
         if (status){
-            databaseMessage.setText(message);
+            databaseMessage.setText(message + " You have " + (3-loginCounter) + " more attempts before App Closes");
             databaseMessage.setVisibility(View.VISIBLE);
+        }
+        if (loginCounter > 3){
+            AppExit();
+            exit = true;
+            System.exit(1);
         }
     }
     @Override

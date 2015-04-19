@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tuesday6.swcd_app" >
+    package="com.tuesday6.swcd_app"
+    android:name=".SWCDApp">
 
     <!-- Internet Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />

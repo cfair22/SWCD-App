@@ -54,9 +54,12 @@ public class Admin_ListAllStains extends ListActivity{
 
         //Locate TextView for database Message
         AdminDatabaseMessage = (TextView) findViewById(R.id.admin_database_message);
-//        Intent newintent = getIntent();
-//        message = newintent.getExtras().getString("message");
-//        AdminDatabaseMessage.setText(message);
+        AdminDatabaseMessage.setVisibility(View.INVISIBLE);
+        if (SWCDApp.isDeleted){
+            AdminDatabaseMessage.setVisibility(View.VISIBLE);
+            AdminDatabaseMessage.setText(SWCDApp.databaseMessage);
+        }
+
 
 
 

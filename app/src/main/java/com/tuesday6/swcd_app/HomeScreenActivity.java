@@ -50,6 +50,7 @@ public class HomeScreenActivity extends Activity implements View.OnClickListener
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
@@ -59,6 +60,10 @@ public class HomeScreenActivity extends Activity implements View.OnClickListener
 
         loginButton = (Button) findViewById(R.id.button_admin_login);
         loginButton.setOnClickListener(this);
+
+        System.out.println(SWCDApp.databaseMessage);
+        SWCDApp.databaseMessage = "Hello";
+        System.out.println(SWCDApp.databaseMessage);
     }
 
     @Override
