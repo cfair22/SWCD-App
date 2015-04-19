@@ -44,9 +44,8 @@
     <string name="admin_panel_addStain_label">Add New Stain</string>
     <string name="admin_panel_addStain_button">Add Stain</string>
     <string name="admin_panel_editStain_label">Edit Existing Stain</string>
-    <string name="admin_panel_editStain_button">Edit Stain</string>
-    <string name="admin_panel_deleteStain_label">Delete Existing Stain</string>
-    <string name="admin_panel_deleteStain_button">Delete Stain</string>
+    <string name="admin_panel_editStain_button">Edit Or Delete Stain</string>
+
     <string name="title_activity_admin_edit_stain">AdminEditStain</string>
     <string name="admin_edit_stain_update_button">Update Stain</string>
     <string name="admin_edit_stain_delete_button">Delete Stain</string>

@@ -29,13 +29,17 @@ import java.sql.BatchUpdateException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.transform.Result;
+
 
 public class Login extends Activity implements View.OnClickListener {
 
 
     private Button loginButton;
     private EditText passwordEditText;
-
+    public boolean loginStatus = true;
+    private TextView databaseMessage;
+    private String message;
 
     //progress Dialog
     private ProgressDialog progressDialog;
@@ -59,6 +63,10 @@ public class Login extends Activity implements View.OnClickListener {
         passwordEditText = (EditText) findViewById(R.id.admin_login_editText);
         loginButton = (Button)findViewById(R.id.admin_login_at_login);
         loginButton.setOnClickListener(this);
+
+        databaseMessage = (TextView) findViewById(R.id.admin_login_database_message);
+        databaseMessage.setText("Login failed");
+        databaseMessage.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -66,6 +74,8 @@ public class Login extends Activity implements View.OnClickListener {
         if (v.getId() == R.id.admin_login_at_login){
             new AdminLogin().execute();
         }
+
+
     }
 
 
@@ -109,6 +119,9 @@ public class Login extends Activity implements View.OnClickListener {
                     Intent intent = new Intent(Login.this, AdminPanel.class);
                     startActivity(intent);
                 } else{
+                    message = jsonObject.getString(TAG_MESSAGE);
+                    loginStatus = false;
+
 
                    System.out.println("Attempt was not successful");
                    progressDialog.dismiss();
@@ -122,17 +135,28 @@ public class Login extends Activity implements View.OnClickListener {
 
             return null;
         }
-    }
+        protected void onPostExecute(String result){
+            //super.onPostExecute(result);
 
-    protected void onPostExecute(String file_url){
-        //loginMessage.setText("HEllo WOrld");
+            if (progressDialog != null){
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
 
-        if (progressDialog != null){
-            progressDialog.dismiss();
-            progressDialog = null;
+            if (!loginStatus){
+                UpdateUi(true);
+            }
         }
     }
 
+
+
+    public void UpdateUi(boolean status){
+        if (status){
+            databaseMessage.setText(message);
+            databaseMessage.setVisibility(View.VISIBLE);
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

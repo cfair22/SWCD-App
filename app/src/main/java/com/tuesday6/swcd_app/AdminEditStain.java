@@ -43,6 +43,8 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
     Button editStain;
     Button deleteStain;
 
+    String message;
+
     String stain_id;
     //url to edit existing stain
     private static String urlEditStain = "http://southwestcd.com/update_stain.php";
@@ -55,6 +57,7 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
 
     //JSON Node names
     private static final String TAG_SUCCESS = "success";
+    private static final String TAG_MESSAGE = "message";
     private static final String TAG_STAINS = "stains";
     private static final String TAG_STAIN_NAME = "stain_name_db";
     private static final String TAG_STAIN_ID = "stain_id";
@@ -379,9 +382,14 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
                 success = jsonObject.getInt(TAG_SUCCESS);
                 if (success == 1){
                     //stain deleted
+                    message = jsonObject.getString(TAG_MESSAGE);
+                    System.out.println(message);
                     Intent intent = getIntent();
+                    intent.putExtra("message", message);
                     setResult(100, intent);
                     finish();
+                } else {
+
                 }
             } catch (JSONException e){
                 e.printStackTrace();
@@ -394,6 +402,7 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
                 progressDialog.dismiss();
                 progressDialog = null;
             }
+            //display message from database for successful delete
         }
     }
     @Override

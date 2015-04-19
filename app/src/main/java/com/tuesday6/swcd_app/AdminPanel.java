@@ -26,8 +26,7 @@ public class AdminPanel extends Activity implements View.OnClickListener {
         editStain = (Button) findViewById(R.id.admin_panel_editStain_button);
         editStain.setOnClickListener(this);
 
-        deleteStain = (Button) findViewById(R.id.admin_panel_deleteStain_button);
-        deleteStain.setOnClickListener(this);
+
 
 
     }
@@ -44,9 +43,7 @@ public class AdminPanel extends Activity implements View.OnClickListener {
             Intent editIntent = new Intent(AdminPanel.this, Admin_ListAllStains.class);
             startActivity(editIntent);
         }
-        if (v.getId() == R.id.admin_panel_deleteStain_button){
-            //Delete Stain Intent
-        }
+
     }
 
     @Override

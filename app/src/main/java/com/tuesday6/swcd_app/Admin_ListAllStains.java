@@ -26,6 +26,9 @@ import java.util.List;
  * Created by cfair_000 on 4/4/2015.
  */
 public class Admin_ListAllStains extends ListActivity{
+
+    TextView AdminDatabaseMessage;
+    String message;
     private ProgressDialog progressDialog;
 
     JSONParser jsonParser = new JSONParser();
@@ -48,6 +51,14 @@ public class Admin_ListAllStains extends ListActivity{
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_result);
+
+        //Locate TextView for database Message
+        AdminDatabaseMessage = (TextView) findViewById(R.id.admin_database_message);
+//        Intent newintent = getIntent();
+//        message = newintent.getExtras().getString("message");
+//        AdminDatabaseMessage.setText(message);
+
+
 
         //Hashmap for ListView
         stainList = new ArrayList<HashMap<String, String>>();
@@ -81,8 +92,17 @@ public class Admin_ListAllStains extends ListActivity{
             // means user edited/deleted product
             // reload this screen again
             Intent intent = getIntent();
+            //intent.getExtras();
+
             finish();
+
             startActivity(intent);
+
+//            //Get message from Intent
+//            Bundle extras = getIntent().getExtras();
+//            message = extras.getString("message");
+
+
         }
 
     }
