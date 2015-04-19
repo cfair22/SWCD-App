@@ -266,7 +266,7 @@ public class StepsForStainActivity extends Activity implements View.OnClickListe
 
                     System.out.println("Stain name = " + staindata.get(TAG_STAIN_NAME));
 
-                    stainName.setText("ID: " + staindata.get(TAG_STAIN_NAME));
+                    stainName.setText("Stain Name: " + staindata.get(TAG_STAIN_NAME));
                     howto.setText(staindata.get(TAG_CARPET_HOW));
                     notes.setText(staindata.get(TAG_CARPET_NOTES));
 

@@ -11,11 +11,20 @@
         android:layout_height="wrap_content"
         android:id="@+id/admin_database_message"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-    <ListView
+
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@android:id/list">
+        android:paddingTop="18dp">
 
-    </ListView>
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@android:id/list">
+
+        </ListView>
+
+    </RelativeLayout>
+
 
 </RelativeLayout>
