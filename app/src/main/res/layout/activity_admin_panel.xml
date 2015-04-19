@@ -39,23 +39,7 @@
         android:layout_below="@+id/admin_panel_editStain_textView"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/admin_panel_deleteStain_label"
-        android:id="@+id/admin_panel_deleteStain_textView"
-        android:layout_below="@+id/admin_panel_editStain_button"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentStart="true" />
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/admin_panel_deleteStain_button"
-        android:id="@+id/admin_panel_deleteStain_button"
-        android:layout_below="@+id/admin_panel_deleteStain_textView"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true" />
+
 
 
 
