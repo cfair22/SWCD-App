@@ -32,65 +32,80 @@
         android:layout_marginLeft="10dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:id="@+id/linearLayout">
+        android:id="@+id/linearLayout"
+        android:weightSum="1">
 
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"
             android:text="@string/button_carpet"
             android:id="@+id/carpet_button"
-            android:textSize="10sp"
+            android:textSize="13dp"
             android:background="@drawable/buttonshape"
             android:textColor="#EDE7F6"
-            android:padding="15dp" />
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:minWidth="69dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"
             android:text="@string/button_tile"
             android:id="@+id/tile_button"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/carpet_button"
             android:background="@drawable/buttonshape"
             android:textColor="#EDE7F6"
-            android:textSize="10sp"
-            android:padding="15dp" />
+            android:textSize="13dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:minWidth="69dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"
             android:text="@string/button_rug"
             android:id="@+id/rug_button"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/tile_button"
             android:background="@drawable/buttonshape"
             android:textColor="#EDE7F6"
-            android:textSize="10sp"
-            android:padding="15dp" />
+            android:textSize="13dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:minWidth="74dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"
             android:text="@string/button_upholstery"
             android:id="@+id/upholstery_button"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/rug_button"
             android:background="@drawable/buttonshape"
             android:textColor="#EDE7F6"
-            android:textSize="10sp"
-            android:padding="15dp" />
+            android:textSize="13dp"
+            android:layout_weight="0.44"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:minWidth="78dp" />
 
     </LinearLayout>
 
@@ -118,7 +133,9 @@
                 android:layout_marginLeft="5dp"
                 android:text="@string/howto_label"
                 android:textColor="#F3E5F5"
-                android:id="@+id/howto_label" />
+                android:id="@+id/howto_label"
+                android:textSize="25sp"
+                />
 
             <TextView
                 android:layout_width="match_parent"
@@ -129,7 +146,8 @@
                 android:ems="10"
                 android:id="@+id/how_to"
                 android:textColor="#F3E5F5"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -140,7 +158,8 @@
                 android:layout_marginLeft="5dp"
                 android:text="@string/notes_label"
                 android:textColor="#F3E5F5"
-                android:id="@+id/notes_label" />
+                android:id="@+id/notes_label"
+                android:textSize="25sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -151,7 +170,8 @@
                 android:ems="10"
                 android:id="@+id/notes"
                 android:textColor="#F3E5F5"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:textSize="20sp" />
 
         </LinearLayout>
     </ScrollView>

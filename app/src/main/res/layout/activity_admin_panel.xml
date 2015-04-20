@@ -7,46 +7,29 @@
     tools:context="com.tuesday6.swcd_app.AdminPanel"
     android:background="#0277BD">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/admin_panel_addStain_label"
-        android:id="@+id/admin_panel_addStain_textView"
-        android:layout_alignParentTop="true"
-        android:textColor="#F3E5F5"
-        android:layout_alignParentStart="true" />
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/admin_panel_addStain_button"
         android:id="@+id/admin_panel_addStain_button"
-        android:layout_below="@+id/admin_panel_addStain_textView"
         android:background="@drawable/buttonshape"
         android:textColor="#EDE7F6"
-        android:layout_alignParentStart="true"
-        android:padding="15dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/admin_panel_editStain_label"
-        android:id="@+id/admin_panel_editStain_textView"
-        android:layout_below="@+id/admin_panel_addStain_button"
-        android:layout_marginTop="20dp"
-        android:textColor="#F3E5F5"
+        android:padding="15dp"
+        android:layout_marginTop="36dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/admin_panel_editStain_button"
         android:id="@+id/admin_panel_editStain_button"
-        android:layout_below="@+id/admin_panel_editStain_textView"
         android:background="@drawable/buttonshape"
         android:textColor="#EDE7F6"
-        android:layout_alignParentStart="true"
-        android:padding="15dp" />
+        android:padding="15dp"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/admin_panel_addStain_button"
+        android:layout_alignParentEnd="true" />
 
 
 

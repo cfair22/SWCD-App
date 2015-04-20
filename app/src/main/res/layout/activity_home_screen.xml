@@ -13,7 +13,7 @@ tools:context=".HomeScreen"
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search for Stain"
+            android:text="Search for a stain"
             android:textColor="#F3E5F5"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -37,10 +37,10 @@ tools:context=".HomeScreen"
            android:textColor="#EDE7F6"
 
 
-
+            android:padding="15dp"
+            android:layout_marginTop="28dp"
             android:layout_below="@+id/edit_search"
-            android:layout_alignParentStart="true"
-            android:padding="15dp">
+            android:layout_toEndOf="@+id/textView1">
         </Button>
 
     <Button

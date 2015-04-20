@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SWCD-App</string>
+    <string name="app_name"> Technician App</string>
     <string name="title_activity_home_screen">HomeScreenActivity</string>
 
     <string name="hello_world">Hello world!</string>
@@ -9,16 +9,16 @@
     <string name="title_activity_admin">AdminActivity</string>
 
     <string name="search_hint">Coffee</string>
-    <string name="search_title">Search for Stain</string>
-    <string name="title_activity_search_results">SearchResultsActivity</string>
+    <string name="search_title">Search for a stain</string>
+    <string name="title_activity_search_results">Search Results</string>
     <string name="master">Hello Master!</string>
     <string name="stain_name">Stain Name</string>
-    <string name="title_activity_list_result">ListResult</string>
+    <string name="title_activity_list_result">List Result</string>
     <string name="button_tile">Tile</string>
     <string name="button_rug">Area Rug</string>
     <string name="button_upholstery">Upholstery</string>
     <string name="button_carpet">Carpet</string>
-    <string name="howto_label">How To Clean Stain</string>
+    <string name="howto_label">How To Clean</string>
     <string name="notes_label">Additional Notes</string>
     <string name="admin_stain_name">Stain Name</string>
     <string name="admin_carpet_label">Carpet Steps</string>
@@ -40,13 +40,13 @@
     <string name="home_admin_login">Admin Login</string>
     <string name="title_activity_login">Login</string>
     <string name="submit_new_stain">Submit New Stain</string>
-    <string name="title_activity_admin_panel">AdminPanel</string>
-    <string name="admin_panel_addStain_label">Add New Stain</string>
+    <string name="title_activity_admin_panel">Admin Home</string>
+    //<string name="admin_panel_addStain_label">Add New Stain</string>
     <string name="admin_panel_addStain_button">Add Stain</string>
-    <string name="admin_panel_editStain_label">Edit Existing Stain</string>
-    <string name="admin_panel_editStain_button">Edit Or Delete Stain</string>
+    //<string name="admin_panel_editStain_label">Edit Existing a Stain</string>
+    <string name="admin_panel_editStain_button">Edit or Delete a Stain</string>
 
-    <string name="title_activity_admin_edit_stain">AdminEditStain</string>
+    <string name="title_activity_admin_edit_stain">Edit Stain</string>
     <string name="admin_edit_stain_update_button">Update Stain</string>
     <string name="admin_edit_stain_delete_button">Delete Stain</string>
 </resources>
