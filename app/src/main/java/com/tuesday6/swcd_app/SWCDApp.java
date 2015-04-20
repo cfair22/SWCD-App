@@ -10,6 +10,8 @@ public class SWCDApp extends Application {
     public static String databaseMessage = "Stain List:";
     public static boolean isDeleted = false;
     public static boolean isLoggedIn = false;
+    public static String noStainResult = "No Stains Found";
+    public static boolean stainFound = true;
 
     private static SWCDApp singleton;
 

@@ -64,6 +64,8 @@ public class HomeScreenActivity extends Activity implements View.OnClickListener
         System.out.println(SWCDApp.databaseMessage);
         SWCDApp.databaseMessage = "Hello";
         System.out.println(SWCDApp.databaseMessage);
+
+        SWCDApp.isLoggedIn = false;
     }
 
     @Override

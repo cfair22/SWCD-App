@@ -96,8 +96,13 @@ public class StepsForStainActivity extends Activity implements View.OnClickListe
         howto = (TextView) findViewById(R.id.how_to);
         notes = (TextView) findViewById(R.id.notes);
 
-        if (SWCDApp.isLoggedIn){
+        SWCDApp.stainFound = true;
+        backToAdminPanel = (Button) findViewById(R.id.BackToAdminHOme);
+        backToAdminPanel.setVisibility(View.INVISIBLE);
 
+        if (SWCDApp.isLoggedIn){
+            backToAdminPanel.setVisibility(View.VISIBLE);
+            backToAdminPanel.setOnClickListener(this);
         }
 
 
@@ -120,6 +125,10 @@ public class StepsForStainActivity extends Activity implements View.OnClickListe
         if (v.getId() == R.id.upholstery_button){
             howto.setText(staindata.get(TAG_UPHOLSTERY_HOW));
             notes.setText(staindata.get(TAG_UPHOLSTERY_NOTES));
+        }
+        if (v.getId() == R.id.BackToAdminHOme){
+            Intent backToAdmin = new Intent(StepsForStainActivity.this, AdminPanel.class);
+            startActivity(backToAdmin);
         }
     }
 

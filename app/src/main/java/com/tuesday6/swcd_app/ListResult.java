@@ -29,6 +29,8 @@ import java.util.List;
 
 public class ListResult extends ListActivity {
 
+    TextView databaseMessage;
+
     // Progress Dialog
     private ProgressDialog pDialog;
 
@@ -58,10 +60,14 @@ public class ListResult extends ListActivity {
         setContentView(R.layout.activity_list_result);
         Intent myIntent = getIntent();
 
+        SWCDApp.stainFound = true;
         Bundle extras = getIntent().getExtras();
         searchkey = extras.getString("keyword");
 
         stainsList = new ArrayList<HashMap<String, String>>();
+
+        databaseMessage = (TextView) findViewById(R.id.admin_database_message);
+        databaseMessage.setVisibility(View.INVISIBLE);
 
         new LoadStains().execute();
 
@@ -147,8 +153,9 @@ public class ListResult extends ListActivity {
                         stainsList.add(map);
                     }
                 } else {
-                    // no idioms found
-                    //do something
+                    SWCDApp.stainFound = false;
+
+
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -167,6 +174,10 @@ public class ListResult extends ListActivity {
             if (pDialog != null) {
                 pDialog.dismiss();
                 pDialog = null;
+            }
+            if (!SWCDApp.stainFound){
+                databaseMessage.setVisibility(View.VISIBLE);
+                databaseMessage.setText(SWCDApp.noStainResult);
             }
             // updating UI from Background Thread
             runOnUiThread(new Runnable() {
