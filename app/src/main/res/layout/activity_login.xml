@@ -7,7 +7,7 @@
     tools:context="com.tuesday6.swcd_app.Login"
     android:background="#0277BD">
 
-    <TextView android:text="@string/home_admin_login"
+    <TextView android:text="@string/admin_login_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
@@ -27,7 +27,7 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Admin Login"
+        android:text="Login"
         android:id="@+id/admin_login_at_login"
         android:layout_below="@+id/admin_login_editText"
         android:layout_toEndOf="@+id/textView2"

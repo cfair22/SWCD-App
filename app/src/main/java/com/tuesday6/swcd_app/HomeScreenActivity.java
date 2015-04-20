@@ -58,7 +58,7 @@ public class HomeScreenActivity extends Activity implements View.OnClickListener
         searchButton = (Button) findViewById(R.id.search_button);
         searchButton.setOnClickListener(this);
 
-        loginButton = (Button) findViewById(R.id.button_admin_login);
+        loginButton = (Button) findViewById(R.id.textView2);
         loginButton.setOnClickListener(this);
 
         System.out.println(SWCDApp.databaseMessage);
@@ -74,7 +74,7 @@ public class HomeScreenActivity extends Activity implements View.OnClickListener
             startActivity(searchIntent);
         }
 
-        if (v.getId() == R.id.button_admin_login){
+        if (v.getId() == R.id.textView2){
             Intent loginIntent = new Intent(HomeScreenActivity.this, Login.class);
             startActivity(loginIntent);
         }

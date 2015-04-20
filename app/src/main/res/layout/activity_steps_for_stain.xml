@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:layout_marginLeft="2dp"
+            android:layout_marginLeft="1dp"
             android:text="@string/button_carpet"
             android:id="@+id/carpet_button"
             android:textSize="13dp"
@@ -50,13 +50,14 @@
             android:paddingBottom="15dp"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:minWidth="69dp" />
+            android:minWidth="72dp"
+            android:layout_margin="1dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:layout_marginLeft="2dp"
+            android:layout_marginLeft="1dp"
             android:text="@string/button_tile"
             android:id="@+id/tile_button"
             android:layout_alignParentTop="true"
@@ -68,13 +69,14 @@
             android:paddingBottom="15dp"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:minWidth="69dp" />
+            android:minWidth="72dp"
+            android:layout_margin="1dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:layout_marginLeft="2dp"
+            android:layout_marginLeft="1dp"
             android:text="@string/button_rug"
             android:id="@+id/rug_button"
             android:layout_alignParentTop="true"
@@ -86,13 +88,14 @@
             android:paddingBottom="15dp"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:minWidth="74dp" />
+            android:minWidth="74dp"
+            android:layout_margin="1dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:layout_marginLeft="2dp"
+            android:layout_marginLeft="1dp"
             android:text="@string/button_upholstery"
             android:id="@+id/upholstery_button"
             android:layout_centerVertical="true"
@@ -105,7 +108,8 @@
             android:paddingBottom="15dp"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:minWidth="78dp" />
+            android:minWidth="75dp"
+            android:layout_margin="1dp" />
 
     </LinearLayout>
 

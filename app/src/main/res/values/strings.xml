@@ -1,19 +1,19 @@
 <resources>
     <string name="app_name"> Technician App</string>
-    <string name="title_activity_home_screen">HomeScreenActivity</string>
+    <string name="title_activity_home_screen">Technician App</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_find_stain">FindStainActivity</string>
-    <string name="title_activity_steps_for_stain">StepsForStainActivity</string>
-    <string name="title_activity_admin">AdminActivity</string>
+    <string name="title_activity_steps_for_stain">Steps for the stain</string>
+    <string name="title_activity_admin">Add a stain</string>
 
     <string name="search_hint">Coffee</string>
     <string name="search_title">Search for a stain</string>
     <string name="title_activity_search_results">Search Results</string>
     <string name="master">Hello Master!</string>
-    <string name="stain_name">Stain Name</string>
-    <string name="title_activity_list_result">List Result</string>
+    <string name="stain_name"> </string>
+    <string name="title_activity_list_result">Results</string>
     <string name="button_tile">Tile</string>
     <string name="button_rug">Area Rug</string>
     <string name="button_upholstery">Upholstery</string>
@@ -38,7 +38,8 @@
     <string name="admin_upholstery_notes_label">Upholstery Notes</string>
     <string name="admin_upholstery_notes">Extra Notes for Upholstery Cleaning</string>
     <string name="home_admin_login">Admin Login</string>
-    <string name="title_activity_login">Login</string>
+    <string name="title_activity_login">Admin Login</string>
+    <string name="admin_login_text">Enter password</string>
     <string name="submit_new_stain">Submit New Stain</string>
     <string name="title_activity_admin_panel">Admin Home</string>
     //<string name="admin_panel_addStain_label">Add New Stain</string>
