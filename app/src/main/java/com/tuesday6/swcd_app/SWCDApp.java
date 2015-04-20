@@ -12,6 +12,7 @@ public class SWCDApp extends Application {
     public static boolean isLoggedIn = false;
     public static String noStainResult = "No Stains Found";
     public static boolean stainFound = true;
+    public static boolean test = false;
 
     private static SWCDApp singleton;
 
