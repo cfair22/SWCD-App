@@ -26,10 +26,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
+//This class is used to display steps for cleaning stain
+//used by technician
 public class StepsForStainActivity extends Activity implements View.OnClickListener {
 
-    // Declare layouts
+    // Declare variables
     TextView stainName;
     Button tile;
     Button carpet;
@@ -39,18 +40,22 @@ public class StepsForStainActivity extends Activity implements View.OnClickListe
     TextView notes;
     Button backToAdminPanel;
 
+    //JsonParser
     JSONParser jsonParser = new JSONParser();
 
+    //Progress Dialog
     ProgressDialog progressDialog;
 
+    //Hashmap to hold stain information from database
     HashMap <String, String> staindata = new HashMap<String, String>();
 
+    //stain_id used to tell which stain to display on layout
     String stain_id;
 
     Context context = this;
 
+    //URL of php script
     private static final String URL_SINGLE_STAIN = "http://southwestcd.com/return_stain.php";
-    //private static final String url_stain = "http://southwestcd.com/return_stain.php?stain_id=32";
 
     //JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -70,44 +75,51 @@ public class StepsForStainActivity extends Activity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //A safety to prevent against app crashes
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         setContentView(R.layout.activity_steps_for_stain);
 
+        //Receieve stain_id from intent that sent user to this page
         Bundle extras = getIntent().getExtras();
         stain_id = extras.getString("stain_id");
 
         policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+        //Run load stains class
         new LoadSingleStain().execute();
 
+        //initialize buttons for switching between datasets
         tile = (Button) findViewById(R.id.tile_button);
         carpet = (Button) findViewById(R.id.carpet_button);
         rug = (Button) findViewById(R.id.rug_button);
         upholstery = (Button) findViewById(R.id.upholstery_button);
 
+        //Add a listener to each button
         tile.setOnClickListener(this);
         carpet.setOnClickListener(this);
         rug.setOnClickListener(this);
         upholstery.setOnClickListener(this);
 
+        //Set the default view to be carpets
         howto = (TextView) findViewById(R.id.how_to);
         notes = (TextView) findViewById(R.id.notes);
 
+        //Global variable for pagination button for admin only
         SWCDApp.stainFound = true;
         backToAdminPanel = (Button) findViewById(R.id.BackToAdminHOme);
         backToAdminPanel.setVisibility(View.INVISIBLE);
 
+        //Show button only when admin is already logged in
         if (SWCDApp.isLoggedIn){
             backToAdminPanel.setVisibility(View.VISIBLE);
             backToAdminPanel.setOnClickListener(this);
         }
-
-
     }
 
+    //Action handlers for each button
     @Override
     public void onClick(View v){
         if (v.getId() == R.id.tile_button){
@@ -132,8 +144,10 @@ public class StepsForStainActivity extends Activity implements View.OnClickListe
         }
     }
 
+    //Load stains class to fill textviews with data from database
     class LoadSingleStain extends AsyncTask<String, String, String>{
 
+        //Show progress dialog
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
@@ -152,7 +166,8 @@ public class StepsForStainActivity extends Activity implements View.OnClickListe
                 public void run() {
                     int success;
                     try{
-                        System.out.println("The id should be 81: it is " + stain_id);
+
+                        //Send stain_id to database to return correct stain to user
                         List<NameValuePair> params = new ArrayList<NameValuePair>();
                         params.add(new BasicNameValuePair("stain_id", stain_id));
 
@@ -166,11 +181,9 @@ public class StepsForStainActivity extends Activity implements View.OnClickListe
 
                         success = jsonObject.getInt(TAG_SUCCESS);
                         if (success == 1){
-                            //product found
-                            //depending on the php code this might nor be neccessary.
+                            //stain found
                             JSONArray stains_one = jsonObject.getJSONArray(TAG_STAINS);
 
-                            //if there is only one product returned by the php then you can make a direct json object from the php
                             JSONObject c = stains_one.getJSONObject(0);
 
 
@@ -267,6 +280,7 @@ public class StepsForStainActivity extends Activity implements View.OnClickListe
             return null;
         }
 
+        //dismiss progress dialog
         protected void onPostExecute(String file_url){
             if (progressDialog != null){
                 progressDialog.dismiss();
@@ -274,18 +288,11 @@ public class StepsForStainActivity extends Activity implements View.OnClickListe
             }
             runOnUiThread(new Runnable(){
                 public void run(){
+                    //Set textviews to stain name and carpet steps first
                     stainName = (TextView) findViewById(R.id.stain_name);
-
-
-
-                    System.out.println("Stain name = " + staindata.get(TAG_STAIN_NAME));
-
                     stainName.setText("Stain Name: " + staindata.get(TAG_STAIN_NAME));
                     howto.setText(staindata.get(TAG_CARPET_HOW));
                     notes.setText(staindata.get(TAG_CARPET_NOTES));
-
-
-
                 }
                 });
         }

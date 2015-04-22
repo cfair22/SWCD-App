@@ -27,6 +27,8 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
+//JsonParser class is the magic of the app, used to handle all json objects sent from
+//database through php. without this all would be lost.
 public class JSONParser {
 
     static InputStream is = null;
@@ -60,13 +62,6 @@ public class JSONParser {
 
             HttpEntity httpEntity = httpResponse.getEntity();
             is = httpEntity.getContent();
-
-
-          /*HttpClient httpclient = new DefaultHttpClient();
-          HttpPost httppost = new HttpPost(url);
-          HttpResponse response = httpclient.execute(httppost);
-          HttpEntity entity = response.getEntity();
-          is = entity.getContent();*/
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

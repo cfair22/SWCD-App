@@ -25,11 +25,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
+// This class is used to by the admin to edit and delete a stain on database
 public class AdminEditStain extends Activity implements View.OnClickListener {
 
+    //Declare all variables used in class
     JSONParser jsonParser = new JSONParser();
-
     ProgressDialog progressDialog;
     EditText newStainName;
     EditText newCarpetHowto;
@@ -42,10 +42,9 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
     EditText newUpholsteryNotes;
     Button editStain;
     Button deleteStain;
-
     String message;
-
     String stain_id;
+
     //url to edit existing stain
     private static String urlEditStain = "http://southwestcd.com/update_stain.php";
 
@@ -70,6 +69,7 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
     private static final String TAG_UPHOLSTERY_HOW = "upholstery_howto_db";
     private static final String TAG_UPHOLSTERY_NOTES = "upholstery_notes_db";
 
+    //Hashmap used to recieve data from database to fill edittext boxes
     HashMap<String, String> staindata = new HashMap<String, String>();
 
     @Override
@@ -80,25 +80,29 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
         //Getting stain_id from intent
         Intent intent = getIntent();
         stain_id = intent.getStringExtra(TAG_STAIN_ID);
-        //For testing purposes the above line is commented delete the line below
 
+        //Global variable used to display message to user
+        // this is set to false in beginning then true after delete happens
         SWCDApp.isDeleted = false;
 
-
+        //This is used as a fail safe to protect the program from crashing
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         //Call load Stain method
         new LoadStain().execute();
 
+        //edit button initialized and Listener set to it
         editStain = (Button) findViewById(R.id.admin_edit_stain);
         editStain.setOnClickListener(this);
 
+        //delete button initialized and Listener set to it
         deleteStain = (Button) findViewById(R.id.admin_delete_stain_button);
         deleteStain.setOnClickListener(this);
 
     }
 
+    //Action of Listener handled here called the correct class
     @Override
     public void onClick(View v){
         if(v.getId() == R.id.admin_edit_stain){
@@ -109,7 +113,10 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
         }
     }
 
+    //Load Stain class is to load the stain to be edited
     class LoadStain extends AsyncTask<String, String, String> {
+
+        //Pre Execute used to load progress dialog for user feedback
         protected void onPreExecute(){
             super.onPreExecute();
             progressDialog = new ProgressDialog(AdminEditStain.this);
@@ -119,6 +126,7 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
             progressDialog.show();
         }
 
+        //Background runs the function of class
         protected String doInBackground(String... args){
 
             //updated UI from Background Thread
@@ -127,27 +135,25 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
                 public void run() {
                     int success;
                     try{
-                        System.out.println("The id should be 81: it is " + stain_id);
+
+                        //Used to send stain ID to database to get returned data for stain
                         List<NameValuePair> params = new ArrayList<NameValuePair>();
                         params.add(new BasicNameValuePair("stain_id", stain_id));
 
                         //getting JSON string from URL
                         JSONObject jsonObject = jsonParser.makeHttpRequest(urlLoadStain, "GET", params);
-                        //JSONObject jsonObject1 = jsonParser.getJSONFromUrl(url_stain);
 
                         //check your log cat for JSON response
                         Log.d("Single Stain Details: ", jsonObject.toString());
 
                         success = jsonObject.getInt(TAG_SUCCESS);
                         if (success == 1){
-                            //product found
-                            //depending on the php code this might nor be neccessary.
+
+                            //product found Jsonarray used to hold stain data from database
                             JSONArray stains_one = jsonObject.getJSONArray(TAG_STAINS);
 
-                            //if there is only one product returned by the php then you can make a direct json object from the php
+                            //Gets first element of array
                             JSONObject c = stains_one.getJSONObject(0);
-
-
 
                             //Storing each json item in variable
                             // each if statement blocks against null values
@@ -241,14 +247,16 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
             return null;
         }
 
+        //Post execute removes progress dialog
         protected void onPostExecute(String file_url){
             if (progressDialog != null){
                 progressDialog.dismiss();
                 progressDialog = null;
             }
+
+            //All data from database is put into the correct EditText on the screen
             runOnUiThread(new Runnable(){
                 public void run(){
-                    //stainName = (TextView) findViewById(R.id.stain_name);
 
                     //Getting variables of EDitText's on edit_stain
                     newStainName = (EditText) findViewById(R.id.admin_edit_stain_name);
@@ -261,7 +269,7 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
                     newUpholsteryHowto = (EditText) findViewById(R.id.admin_edit_upholstery_howto);
                     newUpholsteryNotes = (EditText) findViewById(R.id.admin_edit_upholstery_notes);
 
-
+                    //Then set text of each EditText to correct data values
                     newStainName.setText(staindata.get(TAG_STAIN_NAME));
                     newCarpetHowto.setText(staindata.get(TAG_CARPET_HOW));
                     newCarpetNotes.setText(staindata.get(TAG_CARPET_NOTES));
@@ -277,9 +285,10 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
 
     }
 
-    //Background Async Task to update stain
+    //Edit Stain class allows admin to change edit text's and save changes to database
     class EditStain extends AsyncTask<String, String, String>{
 
+        //Pre Execute is used to run progress dialog to give user feedback
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
@@ -293,9 +302,6 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
         //Updating Stain
         protected String doInBackground(String... args){
 
-            System.out.println("The stain id is " + stain_id);
-
-
             // getting updated data from editTexts
             String stainName = newStainName.getText().toString();
             String carpetHowto = newCarpetHowto.getText().toString();
@@ -307,7 +313,7 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
             String upHowto = newUpholsteryHowto.getText().toString();
             String upNotes = newUpholsteryNotes.getText().toString();
 
-            //BUilding parameters
+            //Building parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair(TAG_STAIN_ID, stain_id));
             params.add(new BasicNameValuePair(TAG_STAIN_NAME, stainName));
@@ -320,22 +326,22 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
             params.add(new BasicNameValuePair(TAG_UPHOLSTERY_HOW, upHowto));
             params.add(new BasicNameValuePair(TAG_UPHOLSTERY_NOTES, upNotes));
 
-            //sending updated data through http request
+            //sending updated data through http request to database
             JSONObject jsonObject = jsonParser.makeHttpRequest(urlEditStain, "POST", params);
 
             try{
                 int success = jsonObject.getInt(TAG_SUCCESS);
 
                 if(success == 1){
-                    System.out.println("Successfully updated Stain!");
+                    //Successfully updated stain
                     Log.d("Message", jsonObject.getString("message"));
+
+                    //Send intent to List all stains to tell activity of new update
                     Intent intent = getIntent();
                     setResult(100, intent);
                     finish();
                 } else {
                     // Failed tp update stain
-                    System.out.println("Failed to update stain");
-                    Log.d("Failure", "failure");
                     Log.d("Message", jsonObject.getString("message"));
                 }
             } catch (JSONException e){
@@ -344,6 +350,7 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
             return null;
         }
 
+        //Post execute dismisses progress dialog
         protected void onPostExecute(String file_url){
             if (progressDialog != null){
                 progressDialog.dismiss();
@@ -352,8 +359,9 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
         }
     }
 
-    //Background Async task to Delete Product
+    //Delete stain class is used to remove stain from database
     class DeleteStain extends AsyncTask<String, String, String>{
+
         // show progress dialog
         @Override
         protected void onPreExecute(){
@@ -365,12 +373,11 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
             progressDialog.show();
         }
 
-        //test testest
         //Deleting Stain
         protected String doInBackground(String... args){
+
             //check for success tag
             int success;
-            System.out.println("The stain id is " + stain_id);
             try{
                 //Building parameters
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -381,15 +388,20 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
 
                 Log.d("Delete Stain!", jsonObject.toString());
 
+                //Get success tag from jsonObject sent from database
                 success = jsonObject.getInt(TAG_SUCCESS);
                 if (success == 1){
                     //stain deleted
+
+                    //message used to set a message on layout for user feedback
                     message = jsonObject.getString(TAG_MESSAGE);
+
+                    //Global variable set to message from database
                     SWCDApp.databaseMessage = message;
                     SWCDApp.isDeleted = true;
-                    System.out.println(message);
-                    Intent intent = getIntent();
 
+                    //Send intent to list all stains so it can update its list
+                    Intent intent = getIntent();
                     setResult(100, intent);
                     finish();
                 } else {
@@ -401,12 +413,12 @@ public class AdminEditStain extends Activity implements View.OnClickListener {
             return null;
         }
 
+        //Post Execute removes progress dialog
         protected void onPostExecute(String file_url){
             if (progressDialog != null){
                 progressDialog.dismiss();
                 progressDialog = null;
             }
-            //display message from database for successful delete
         }
     }
     @Override

@@ -40,9 +40,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
+//Main screen for the app. used for search function and admin login
 public class HomeScreenActivity extends Activity implements View.OnClickListener {
 
+    //declare variables
     private Button searchButton;
     private Button loginButton;
     private EditText editSearch;
@@ -54,20 +55,20 @@ public class HomeScreenActivity extends Activity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+        //initialize edit text and button for search function, add Listener to button
         editSearch = (EditText)findViewById(R.id.edit_search);
         searchButton = (Button) findViewById(R.id.search_button);
         searchButton.setOnClickListener(this);
 
+        //initialize button and add Listener to button
         loginButton = (Button) findViewById(R.id.textView2);
         loginButton.setOnClickListener(this);
 
-        System.out.println(SWCDApp.databaseMessage);
-        SWCDApp.databaseMessage = "Hello";
-        System.out.println(SWCDApp.databaseMessage);
-
+        //Global variable
         SWCDApp.isLoggedIn = false;
     }
 
+    //Listener handler for search or login
     @Override
     public void onClick(View v){
         if (v.getId() == R.id.search_button){

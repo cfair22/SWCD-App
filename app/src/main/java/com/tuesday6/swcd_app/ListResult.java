@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
+//List Result is used to handle the action of listview
 public class ListResult extends ListActivity {
 
     TextView databaseMessage;
@@ -37,6 +37,7 @@ public class ListResult extends ListActivity {
     // Creating JSON Parser object
     JSONParser jParser = new JSONParser();
 
+    //Array List used to hold all stains being sent to listview
     ArrayList<HashMap<String, String>> stainsList;
 
     // url to get the idiom list
@@ -58,25 +59,30 @@ public class ListResult extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_result);
-        Intent myIntent = getIntent();
 
+        //Global variable used to tell if no stains were found
         SWCDApp.stainFound = true;
+
+        //Extra's used to receieve keyword user entered from main page
         Bundle extras = getIntent().getExtras();
         searchkey = extras.getString("keyword");
 
+        //initialize stainsList
         stainsList = new ArrayList<HashMap<String, String>>();
 
+        //Databasemessage is used to tell is no stains were found or not
         databaseMessage = (TextView) findViewById(R.id.admin_database_message);
         databaseMessage.setVisibility(View.INVISIBLE);
 
+        //Run class loadStains
         new LoadStains().execute();
 
+        //Listview used to display data on screen
         ListView lv = getListView();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String iid = ((TextView) view.findViewById(R.id.stain_id)).getText().toString();
-                System.out.println("The id click is " + iid);
                 //Starting new intent
                 Intent intent = new Intent(getApplicationContext(), StepsForStainActivity.class);
                 intent.putExtra(TAG_STAIN_ID, iid);
@@ -100,7 +106,10 @@ public class ListResult extends ListActivity {
 
     }
 
+    //Loadstains class is used as the functionality of class
     class LoadStains extends AsyncTask<String, String, String> {
+
+        //PreExecute loads and runs progress dialog for user feedback
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -153,15 +162,13 @@ public class ListResult extends ListActivity {
                         stainsList.add(map);
                     }
                 } else {
+
+                    //Global variable used to display message to user
                     SWCDApp.stainFound = false;
-
-
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-            //return "success";
             return null;
         }
 
@@ -175,6 +182,7 @@ public class ListResult extends ListActivity {
                 pDialog.dismiss();
                 pDialog = null;
             }
+            //Global variable used to display message to user
             if (!SWCDApp.stainFound){
                 databaseMessage.setVisibility(View.VISIBLE);
                 databaseMessage.setText(SWCDApp.noStainResult);

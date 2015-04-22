@@ -9,9 +9,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-
+//Admin panel is used to hold the buttons for add stain and edit/delete stain
 public class AdminPanel extends Activity implements View.OnClickListener {
 
+    //declare buttons
     Button addStain;
     Button editStain;
     Button deleteStain;
@@ -20,20 +21,20 @@ public class AdminPanel extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_panel);
 
+        //Global variables
         SWCDApp.isDeleted = false;
         SWCDApp.isLoggedIn = true;
 
+        //initialize button and set a Listener to them
         addStain = (Button) findViewById(R.id.admin_panel_addStain_button);
         addStain.setOnClickListener(this);
 
+        //initialize button and set a Listener to them
         editStain = (Button) findViewById(R.id.admin_panel_editStain_button);
         editStain.setOnClickListener(this);
-
-
-
-
     }
 
+    //Listener handler, for add stain and edit stain
     @Override
     public void onClick(View v){
         if (v.getId() == R.id.admin_panel_addStain_button){

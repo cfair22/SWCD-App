@@ -3,8 +3,12 @@ package com.tuesday6.swcd_app;
 import android.app.Application;
 
 /**
- * Created by cfair_000 on 4/19/2015.
+ * Created by Carl on 4/19/2015.
  */
+
+//This is the global variable class. holds all variables for app
+// it is important to set manifest to SWCDApp
+    //android:name=".SWCDApp"
 public class SWCDApp extends Application {
 
     public static String databaseMessage = "Stain List:";

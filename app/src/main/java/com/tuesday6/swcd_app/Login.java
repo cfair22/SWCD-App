@@ -31,10 +31,10 @@ import java.util.List;
 
 import javax.xml.transform.Result;
 
-
+//Login class used to handle login of admin
 public class Login extends Activity implements View.OnClickListener {
 
-
+    //declare variables
     private Button loginButton;
     private EditText passwordEditText;
     public boolean loginStatus = true;
@@ -62,29 +62,32 @@ public class Login extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //initialize edit text and button for login and set listener to it
         passwordEditText = (EditText) findViewById(R.id.admin_login_editText);
         loginButton = (Button)findViewById(R.id.admin_login_at_login);
         loginButton.setOnClickListener(this);
 
+        //initialize database message for user feedback
         databaseMessage = (TextView) findViewById(R.id.admin_login_database_message);
         databaseMessage.setText("Login failed");
         databaseMessage.setVisibility(View.INVISIBLE);
 
+        //variable used to record the amount of failed attempts to login to admin
         loginCounter = 0;
     }
 
+    //Handler for login button
     @Override
     public void onClick(View v){
         if (v.getId() == R.id.admin_login_at_login){
             new AdminLogin().execute();
         }
-
-
     }
 
-
+    //AdminLogin class handles the function of the class
     class AdminLogin extends AsyncTask<String, String, String>{
 
+        //PreExecute loads and runs progress dialog
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
@@ -98,6 +101,8 @@ public class Login extends Activity implements View.OnClickListener {
         protected String doInBackground(String... args){
             //Check for success tag
             int success;
+
+            //password variable gets password entered by user
             String password = passwordEditText.getText().toString();
 
 
@@ -106,29 +111,30 @@ public class Login extends Activity implements View.OnClickListener {
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("password", password));
 
+                //Logcat for developer
                 Log.d("Attempt Login...", jsonParser.toString());
 
+                //JsonObject for sending password to database and check it against database value
                 JSONObject jsonObject = jsonParser.makeHttpRequest(urlLogin, "GET", params);
-
-                System.out.println("Json parser has made http request");
 
                 Log.d("Login Attempt", jsonObject.toString());
                 success = jsonObject.getInt(TAG_SUCCESS);
 
                 if (success == 1){
-                    System.out.println("Login was sucessful");
                     Log.d("Login Sucessful", jsonObject.toString());
 
-                    //Intent to send password
+                    //Intent to send user to adminpanel when password matches
                     Intent intent = new Intent(Login.this, AdminPanel.class);
                     startActivity(intent);
                 } else{
+
+                    //login counter used to track number of failed attempts
                     loginCounter++;
+
+                    //message received from database
                     message = jsonObject.getString(TAG_MESSAGE);
+
                     loginStatus = false;
-
-
-                   System.out.println("Attempt was not successful");
                    progressDialog.dismiss();
 
 
@@ -140,6 +146,8 @@ public class Login extends Activity implements View.OnClickListener {
 
             return null;
         }
+
+        //Post execute used for dismiss progress dialog
         protected void onPostExecute(String result){
             //super.onPostExecute(result);
 
@@ -148,12 +156,14 @@ public class Login extends Activity implements View.OnClickListener {
                 progressDialog = null;
             }
 
+            //if user entered wrong password then update UI with message
             if (!loginStatus){
                 UpdateUi(true);
             }
         }
     }
 
+    //Method used to kick user out of app after so many failed attempts to login
     public void AppExit()
     {
         this.finish();
@@ -161,15 +171,9 @@ public class Login extends Activity implements View.OnClickListener {
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-
-    /*int pid = android.os.Process.myPid();=====> use this if you want to kill your activity. But its not a good one to do.
-    android.os.Process.killProcess(pid);*/
-
     }
 
-
-
-
+    //Method used to show user of failed attempt and display remaining login attempts before app closes
     public void UpdateUi(boolean status){
         if (status){
             databaseMessage.setText(message + " You have " + (3-loginCounter) + " more attempts before App Closes");
